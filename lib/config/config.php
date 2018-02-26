@@ -19,4 +19,4 @@ define('MOTOR', 'MYSQL');
 define('HOST', 'localhost');
 define('BD', 'empresa');
 define('USUARIO', 'root');
-define('PASSWORD', 'Camilo@64');
+define('PASSWORD', '');

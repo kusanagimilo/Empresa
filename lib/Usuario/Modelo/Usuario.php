@@ -105,7 +105,7 @@ class Usuario {
         $clave = hash('sha512', $data['clave']);
 
 
-        $sql = "SELECT us.id_usuario,us.nombre_usuario,per.nombres,per.apellidos,us.estado,us.clave
+        $sql = "SELECT us.id_usuario,us.nombre_usuario,per.nombres,per.apellidos,us.estado,us.clave,per.id_persona
 FROM usuario us
 INNER JOIN persona per ON per.id_usuario = us.id_usuario
 WHERE us.nombre_usuario = '" . htmlspecialchars($data['correo']) . "'

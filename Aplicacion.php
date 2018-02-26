@@ -9,8 +9,6 @@ session_start();
 $usuario = $_SESSION['usuario'];
 $anio = date('Y');
 
-
-
 if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
     ?>
     <html>
@@ -26,6 +24,8 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
 
 
             <script type="text/javascript" src="assets/js/vendor/bootstrap.min.js"></script>
+            <script type="text/javascript" src="lib/Utilidades/js/Utilidades.js"></script>
+            <script type="text/javascript" src="lib/HojaVida/js/HojaVida.js"></script>
     <!--            <script type="text/javascript" src="js/Usuario.js"></script>
             <script type="text/javascript" src="js/Docente.js"></script>
             <script type="text/javascript" src="js/HojaVida.js"></script>
@@ -118,13 +118,19 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Apellidos</label>  
                                     <div class="col-md-7">
-                                        <input type="text" class="form-control" id="nombres" name="nombres" placeholder="APELLIDOS" >
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="APELLIDOS" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="textinput">Correo</label>  
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" id="correo" name="correo" placeholder="Correo electronico" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Tipo identificacion</label>  
                                     <div class="col-md-4">
-                                        <select class="form-control" id="DLio"  name="DLio" >
+                                        <select class="form-control" id="tipo_identificacion"  name="tipo_identificacion" >
                                             <option value="">Seleccione</option>
                                             <option value="1">Cédula de ciudadanía</option>
                                             <option value="2">Cédula de extranjería</option>
@@ -134,14 +140,14 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
                                         </select>
                                     </div>
                                     <div class="col-md-3">
-                                        <input type="text" class="form-control" id="numero_ident" name="numero_ident" placeholder="NUMERO IDENTIFICACION" >
+                                        <input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="NUMERO IDENTIFICACION" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Fecha nacimiento</label>  
                                     <div class="col-md-2">
 
-                                        <select class="form-control"   id="dia" name="dia">
+                                        <select class="form-control" id="dia" name="dia">
                                             <option value="">Seleccion el dia</option>
                                             <?php
                                             for ($index = 1; $index < 32; $index++) {
@@ -183,7 +189,7 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Genero</label>  
                                     <div class="col-md-7">
-                                        <select class="form-control" id="DLio"  name="DLio" >
+                                        <select class="form-control" id="genero"  name="genero" >
                                             <option value="">Seleccione</option>
                                             <option value="Masculino">Masculino</option>
                                             <option value="Femenino">Femenino</option>
@@ -193,7 +199,7 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Estado civil</label>  
                                     <div class="col-md-7">
-                                        <select class="form-control" id="DLio"  name="DLio" >
+                                        <select class="form-control" id="estado_civil"  name="estado_civil" >
                                             <option value="">Seleccione</option>
                                             <option value="Soltero(a)">Soltero(a)</option>
                                             <option value="Casado(a)">Casado(a)</option>
@@ -203,19 +209,19 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Telefono</label>  
                                     <div class="col-md-7">
-                                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="TELEFONO" >
+                                        <input type="text" class="form-control" id="telefono1" name="telefono1" placeholder="TELEFONO" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Telefono 2</label>  
                                     <div class="col-md-7">
-                                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="TELEFONO 2" >
+                                        <input type="text" class="form-control" id="telefono2" name="telefono2" placeholder="TELEFONO 2" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Departamento</label>  
                                     <div class="col-md-7">
-                                        <select class="form-control" id="DLio"  name="DLio" >
+                                        <select onchange="ListaMunicipio('municipio', 'departamento')" class="form-control" id="departamento"  name="departamento" >
                                             <option value="">Seleccione</option>
                                         </select>
                                     </div>
@@ -223,7 +229,7 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Municipio</label>  
                                     <div class="col-md-7">
-                                        <select class="form-control" id="DLio"  name="DLio" >
+                                        <select class="form-control" id="municipio"  name="municipio" >
                                             <option value="">Seleccione</option>
                                         </select>
                                     </div>
@@ -231,13 +237,13 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Direccion</label>  
                                     <div class="col-md-7">
-                                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="TELEFONO" >
+                                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="DIRECCION" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="textinput">Foto</label>  
                                     <div class="col-md-7">
-                                        <input type="file" class="form-control" id="telefono" name="telefono" placeholder="TELEFONO" >
+                                        <input type="file" class="form-control" id="foto" name="foto" placeholder="FOTO" >
                                     </div>
                                 </div>
 
@@ -259,7 +265,7 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
                                     <label class="col-md-2 control-label" for="textinput">Descripción breve de su perfil profesional</label>  
                                     <div class="col-md-7">
                                         <textarea style="height: 150px;" class="form-control" id="perfil_pro_hjv" name="perfil_pro">
-                                                                    
+                                                                                                                
                                         </textarea>
                                     </div>
                                 </div>
@@ -303,7 +309,7 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
                             </div>
 
                             <div class="panel-footer">
-                                <center><input type="button" value="GUARDAR" class="btn btn-success btn-lg"></center>
+                                <center><input type="button" onclick="AlmacenarDataHojaVida(<?php echo $usuario['id_persona'] ?>)" value="GUARDAR" class="btn btn-success btn-lg"></center>
                             </div>
 
 
@@ -318,7 +324,17 @@ if ($usuario['nombre_usuario'] != NULL || $usuario['nombre_usuario'] != '') {
         </div>
 
 
+        <script>
+            ListaDepartamentos('departamento');
 
+
+            var json_data_hoja_vida = InformacionHojaVida(<?php echo $usuario['id_persona'] ?>);
+
+            $("#nombres").val(json_data_hoja_vida.nombres);
+            $("#apellidos").val(json_data_hoja_vida.apellidos);
+            $("#correo").val(json_data_hoja_vida.correo);
+
+        </script>
 
     </body>
     </html>
