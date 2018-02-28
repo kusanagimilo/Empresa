@@ -78,8 +78,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html">PERSONAS</a></li>
-                        <li><a href="index.html">EMPRESAS</a></li>
+                        <li><a href="index.html">PERSONAS</a></li>
+                        <li class="active"><a href="index.html">EMPRESAS</a></li>
                         <li class="login"><a href="login.html">INICIAR SESION</a></li>
                     </ul>
 
@@ -95,31 +95,62 @@
                 <div class="row">
                     <div class="main_contact whitebackground">
                         <div class="head_title text-center">
-                            <h2>REGISTRA TU HOJA DE VIDA</h2>
+                            <h2>REGISTRA TU EMPRESA</h2>
                         </div>
                         <div class="contact_content">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <div class="single_left_contact">
                                     <form action="#" id="formid">
 
-                                        <div class="form-group">
-                                            <input type="text" id="nombres" class="form-control" name="nombres" placeholder="Nombres" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" id="apellidos" class="form-control" name="apellidos" placeholder="Apellidos" required="">
-                                        </div>
+                                        <div class="panel panel-default">
 
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo electrónico" required="">
-                                        </div>
 
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="clave" name="clave" placeholder="Clave" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="re_clave" name="re_clave" placeholder="Reingresar clave" required="">
-                                        </div>
+                                            <div class="panel-heading">
+                                                <div class="panel-title">DATOS DE ACCESO</div>
+                                            </div>
 
+                                            <div class="panel-body" >
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo electrónico" required="">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" id="clave" name="clave" placeholder="Clave" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" id="re_clave" name="re_clave" placeholder="Reingresar clave" required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="panel-heading">
+                                                <div class="panel-title">DATOS DE LA EMPRESA</div>
+                                            </div>
+
+                                            <div class="panel-body" >
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre empresa" required="">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="nit" name="nit" placeholder="NIT Empresa" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="departamento" name="departamento">
+                                                        <option>Seleccione el departamento</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="municipio" name="municipio">
+                                                        <option>Seleccione el municipio</option>
+                                                    </select>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion empresa" required="">
+                                                </div>
+                                            </div>
+
+
+                                        </div>
 
                                         <div class="center-content">
                                             <input type="button" value="Continuar" class="btn btn-default" onclick="AlmacenarUsuario()">
@@ -127,10 +158,10 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="single_right_contact">
                                     <p>En esta sección debes ingresar los datos que 
-                                        se te indican a continuación para poder ingresar tu hoja de vida
+                                        se te indican a continuación para poder ingresar tu empresa
                                         en nuestra plataforma</p>
 
 
